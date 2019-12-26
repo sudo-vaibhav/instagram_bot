@@ -2,9 +2,6 @@ import time
 import bs4
 import requests
 from selenium import webdriver
-#driver=webdriver.Chrome("./chromedriver")
-#driver.get("https://www.instagram.com/namaste_chopra_ji/followers")
-time.delay=time.sleep
 
 class insta_bot:
     def login(self):
@@ -20,7 +17,7 @@ class insta_bot:
         time.sleep(2)
     def get_followers(self):
         self.driver.get("https://www.instagram.com/"+self.username)
-        time.delay(3)
+        time.sleep(3)
         self.driver.find_element_by_partial_link_text("following").click()
         self.driver.execute_script("alert('Scroll to the bottom of followers list and when you are done scrolling to the bottom respond with y in the terminal where this bot is running:')")
         resp="n"
