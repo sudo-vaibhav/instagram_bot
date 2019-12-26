@@ -17,7 +17,7 @@ class insta_bot:
         time.sleep(2)
     def get_following(self):
         self.driver.get("https://www.instagram.com/"+self.username)
-        time.delay(3)
+        time.sleep(3)
         self.driver.find_element_by_partial_link_text("following").click()
         self.driver.execute_script("alert('Scroll to the bottom of followers list and when you are done scrolling to the bottom respond with y in the terminal where this bot is running:')")
         resp="n"
