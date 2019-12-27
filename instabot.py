@@ -83,11 +83,13 @@ class insta_bot:
         return profiles
     def save_profiles_to_file(self,filename):
         f=open(filename,"wb")
-        profiles=self.get_following()
+        if filename=="following":
+            profiles=self.get_following()
+        elif filename=="followers":
+            profiles=self.get_followers()
         pickle.dump(profiles,f)
         f.close()
     def read_profiles_from_file(self,filename):
-        
         if filename.endswith(".txt"):
             f=open(filename,'r')
             profiles=f.readlines()
@@ -114,3 +116,5 @@ class insta_bot:
                 time.sleep(2)
                 break
 bot=insta_bot("username")
+bot.save_profiles_to_file("following")
+bot.like_recent_of_following()
