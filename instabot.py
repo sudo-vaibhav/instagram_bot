@@ -1,6 +1,13 @@
 import time
 import pickle
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+
+options = Options()
+options.add_argument("user-data-dir=/Users/vaibhavchopra/Library/Application Support/Google/Chrome/Default")
+
+
 
 class insta_bot:
     def login(self):
@@ -39,7 +46,7 @@ class insta_bot:
         following=self.read_following_from_file()
         for profile in following:
             self.like_recent_of_given(profile)
-    
+
     def get_following(self):
         self.driver.get("https://www.instagram.com/"+self.username)
         time.sleep(3)
@@ -88,8 +95,7 @@ class insta_bot:
     def __init__(self,username,password):
         self.username=username
         self.password=password
-        self.driver=webdriver.Chrome("./chromedriver")
-        self.login()
+        self.driver = webdriver.Chrome(options=options)
         self.base_link="https://www.instagram.com/"
     def follow(self,profile):
         self.driver.get(self.base_link+profile)
@@ -100,7 +106,5 @@ class insta_bot:
                 button.click()
                 time.sleep(2)
                 break
-            
-bot=insta_bot("user_name","pass_word") 
 
-
+bot=insta_bot("_choprautomated_","Password@123")
